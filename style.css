@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgb(3, 56, 77);
+    padding: 64px max(calc(50% - 320px), 64px);
+}
+
+h2{
+    font-size: 32px;
+    text-align: center;
+}
+
+textarea{
+    resize: none;
+    text-align: start;
+}
+
+button{
+    width: 30px;
+    height: 30px;
+}
+
+/* Artikel-Styling */
+
+article {
+    width: 480px;
+}
+
+article > header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+article > section{
+    display: flex;
+    flex-direction: column;
+}
+
+hr{
+    border: 3px solid rgb(46, 146, 85);
+    width: 100%;
+    height: 4px; 
+}
+
+.bookImage{
+    width: 120px;
+}
+
+.priceAndLikes{
+    display: flex;
+    justify-content: space-between;
+}
