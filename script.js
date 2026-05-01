@@ -1,40 +1,67 @@
 const KEYS = Object.keys(books);
-let bookList = [];
 
 function init() {
-    renderBookTemplate();
-    getBookList();
+    renderBookTemplate();   
 }
 
 function renderBookTemplate() {
     for (let i = 0; i < books.length; i++) {
         let contentRef = document.getElementById('content');
-        contentRef.innerHTML += renderBook();
-        getArrayContent(i);  
+        contentRef.innerHTML += renderBook(i);  
+        getBookData(i);    
     }
 }
 
-function getBookList() {
-    bookList = document.querySelectorAll('.book');
-    console.log(bookList);      
-}
-
-function getArrayContent(index) {
-    let title = document.getElementById('bookTitle');
-    let price = document.getElementById('price');
-    let likes = document.getElementById('likesAmount');
-    let commentFrom = document.getElementById('commentName');
-    let commentText = document.getElementById('commentText');
+function getBookData(index) {
+    let title = document.getElementById(`bookTitle${index}`);
+    let price = document.getElementById(`priceValue${index}`);
+    let likes = document.getElementById(`likesAmount${index}`);
 
     title.innerText += books[KEYS[index]].name;
     price.textContent += books[KEYS[index]].price;
     likes.textContent += books[KEYS[index]].likes;
-    if (books[KEYS[index]].comments[index] == null) {
-       return; 
-    }
-    else {
-        commentFrom.textContent += books[KEYS[index]].comments[index].name;
-        commentText.textContent += books[KEYS[index]].comments[index].comment;
+
+    getBookCommentData(index);
+}
+
+function getBookCommentData(index) {
+    let tableRef = document.getElementById(`commentTable${index}`)
+    for (let i = 0; i < books[KEYS[index]].comments.length; i++) {
+        let commentName = books[KEYS[index]].comments[i].name;
+        let commentText = books[KEYS[index]].comments[i].comment;
+        
+        tableRef.innerHTML += renterComments(commentName, commentText);    
     }
 }
 
+function changeLikeAmount(elementId) {
+    let index = elementId.split('likesAmount');    
+
+    if (books[KEYS[index[1]]].liked == false) {
+        addLike(index, elementId);
+    } else {
+        deleteLike(index, elementId);
+    }
+}
+
+function addLike(i, elementId) {
+    let likeAmountRef = document.getElementById(elementId);
+    let likes = books[KEYS[i[1]]].likes;
+    let newValue = likes + 1;
+
+    likeAmountRef.innerText = "";
+    likeAmountRef.innerText = newValue;
+    books[KEYS[i[1]]].liked = true;
+    books[KEYS[i[1]]].likes = likes + 1;   
+}
+
+function deleteLike(i, elementId) {
+    let likeAmountRef = document.getElementById(elementId);
+    let likes = books[KEYS[i[1]]].likes;
+    let newValue = likes - 1;
+
+    likeAmountRef.innerText = "";
+    likeAmountRef.innerText = newValue;    
+    books[KEYS[i[1]]].liked = false;
+    books[KEYS[i[1]]].likes = likes - 1;
+}

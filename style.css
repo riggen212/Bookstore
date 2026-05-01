@@ -6,8 +6,9 @@
 body{
     display: flex;
     flex-direction: column;
+    align-items: center;
 
-    background-color: rgb(3, 56, 77);
+    background-color: rgb(53, 92, 107);
     padding: 64px max(calc(50% - 320px), 64px);
 }
 
@@ -16,12 +17,17 @@ h2{
     text-align: center;
 }
 
+h3{
+    padding: 12px 0 24px 0;
+}
+
 textarea{
     resize: none;
     text-align: start;
+    margin-top: 24px;
 }
 
-button{
+.likeImage{
     width: 30px;
     height: 30px;
 }
@@ -29,7 +35,12 @@ button{
 /* Artikel-Styling */
 
 article {
-    width: 480px;
+    width: 600px;
+    max-height: 550px;
+    padding: 24px 24px;
+    margin: 24px 0;
+
+    border: 2px solid rgb(17, 58, 13);
 }
 
 article > header{
@@ -49,6 +60,9 @@ hr{
     height: 4px; 
 }
 
+button{
+    cursor: pointer;
+}
 .bookImage{
     width: 120px;
 }
@@ -56,4 +70,27 @@ hr{
 .priceAndLikes{
     display: flex;
     justify-content: space-between;
+}
+
+.price{
+    color: rgb(145, 11, 11);
+    font-size: 24px;
+}
+
+table{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 120px;
+    overflow-y: auto;
+    border-collapse: collapse;
+}
+
+.name{
+    min-width: 25%;
+}
+.commentEntry{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 16px;
 }
