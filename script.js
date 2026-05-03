@@ -21,11 +21,14 @@ function getBookData(index) {
     price.textContent += books[KEYS[index]].price;
     likes.textContent += books[KEYS[index]].likes;
 
+    displayLikedStatus(index);
     getBookCommentData(index);
 }
 
 function getBookCommentData(index) {
     let tableRef = document.getElementById(`commentTable${index}`)
+    tableRef.innerHTML = "";
+    
     for (let i = 0; i < books[KEYS[index]].comments.length; i++) {
         let commentName = books[KEYS[index]].comments[i].name;
         let commentText = books[KEYS[index]].comments[i].comment;
@@ -42,6 +45,8 @@ function changeLikeAmount(elementId) {
     } else {
         deleteLike(index, elementId);
     }
+    
+    displayLikedStatus(index[1]);
 }
 
 function addLike(i, elementId) {
@@ -52,7 +57,8 @@ function addLike(i, elementId) {
     likeAmountRef.innerText = "";
     likeAmountRef.innerText = newValue;
     books[KEYS[i[1]]].liked = true;
-    books[KEYS[i[1]]].likes = likes + 1;   
+    books[KEYS[i[1]]].likes = likes + 1; 
+    
 }
 
 function deleteLike(i, elementId) {
@@ -64,4 +70,26 @@ function deleteLike(i, elementId) {
     likeAmountRef.innerText = newValue;    
     books[KEYS[i[1]]].liked = false;
     books[KEYS[i[1]]].likes = likes - 1;
+
+}
+
+function displayLikedStatus(i) {
+   const BUTTONREF = document.getElementById(`likeBtn${i}`);  
+
+    if (books[KEYS[i]].liked) {
+        BUTTONREF.classList.add("button-active");
+    } else {
+        BUTTONREF.classList.remove("button-active");
+    }
+}
+
+function sendComment(element) {
+    let index = element.split('btn');
+    let commentText = document.getElementById(`commentInput${index[1]}`).value;
+    let commentArray = books[KEYS[index[1]]].comments;
+
+    let newArray = {name: 'Basti', comment: commentText};
+    commentArray.unshift(newArray);
+    console.log(books[KEYS[index[1]]].comments);
+    getBookCommentData(index[1]);
 }

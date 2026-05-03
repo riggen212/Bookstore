@@ -21,12 +21,6 @@ h3{
     padding: 12px 0 24px 0;
 }
 
-textarea{
-    resize: none;
-    text-align: start;
-    margin-top: 24px;
-}
-
 .likeImage{
     width: 30px;
     height: 30px;
@@ -62,6 +56,15 @@ hr{
 
 button{
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    padding: 0;
+}
+
+.button-active{
+    background-color: rgb(201, 131, 131, 0.5);
+    border-radius: 50%;
 }
 .bookImage{
     width: 120px;
@@ -70,11 +73,13 @@ button{
 .priceAndLikes{
     display: flex;
     justify-content: space-between;
+    padding-top: 8px;
 }
 
 .price{
     color: rgb(145, 11, 11);
     font-size: 24px;
+    font-weight: bold;
 }
 
 table{
@@ -84,6 +89,8 @@ table{
     height: 120px;
     overflow-y: auto;
     border-collapse: collapse;
+
+    margin-bottom: 24px;
 }
 
 .name{
@@ -91,6 +98,25 @@ table{
 }
 .commentEntry{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding-bottom: 16px;
+}
+
+.likeSection{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+textarea{
+    resize: none;
+    text-align: start;
+    height: 21px;
+    width: 90%;
+    margin-right: 16px;
+}
+
+.send-text{
+    width: 21px;
 }

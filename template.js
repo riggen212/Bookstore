@@ -9,10 +9,10 @@ function renderBook(index) {
             <section>
                 <div class="priceAndLikes">
                     <span class="price" id="priceValue${index}"></span>
-                    <div>
+                    <div class="likeSection">
                         <span id="likesAmount${index}"></span>
-                        <button onclick="changeLikeAmount(this.previousElementSibling.id)">
-                            <img class="likeImage" src="../assets/icons/heart.svg" alt="">
+                        <button id="likeBtn${index}" onclick="changeLikeAmount(this.previousElementSibling.id)">
+                            <img class="likeImage" src="./assets/icons/heart.svg" alt="">
                         </button>
                     </div>
                 </div>
@@ -27,6 +27,9 @@ function renderBook(index) {
                     </table>
             </section>
             <textarea id="commentInput${index}" rows="1" cols="30">Schreibe deinen Kommentar</textarea>
+            <button" id="btn${index}" onclick="sendComment(this.id)">
+                <img class="send-text" src="./assets/icons/send_text_icon.svg" alt="">
+            </button>
         </article>
     `
 }
